@@ -55,10 +55,13 @@ function! perl_local_lib_path#add_perl_paths(perl_paths)
   let original_paths = split(&path, ',')
   call extend(inc_paths, original_paths)
   " clear path
+  let env_perl5lib = $PERL5LIB
   execute "setlocal path<"
   for path in inc_paths
     execute "setlocal path+=".path
+    let env_perl5lib .= ':' . path
   endfor
+  let $PERL5LIB = env_perl5lib
 endfunction
 
 let &cpo = s:save_cpo
