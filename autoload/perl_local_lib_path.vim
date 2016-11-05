@@ -42,7 +42,7 @@ function! s:find_root_directory(current_dir, project_root_files)
 endfunction
 
 let s:archname = system('perl -MConfig -e '.shellescape('print $Config{archname}'))
-let s:perl_project_root_files = ['.git', '.gitmodules', 'Makefile.PL', 'Build.PL']
+let s:perl_project_root_files = ['cpanfile','.git', '.gitmodules', 'Makefile.PL', 'Build.PL']
 let s:perl_lib_dirs = ['lib', 'extlib', 'local/lib/perl5', 'local/lib/perl5/'.s:archname]
 
 function! perl_local_lib_path#add_perl_paths(perl_paths)
